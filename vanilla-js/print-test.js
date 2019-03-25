@@ -8,7 +8,11 @@ y.show()
 // команда y.show() должна вывести 17 в консоль
 
 function yeMath() {
-  // .. put your implementation here
+    let n = 0;
+    return {
+        sum: function(a){n += a;},
+        show: function(){console.log(n);}
+    };
 }
 
 // ----------------------------------------------------------------------------------------------------------
