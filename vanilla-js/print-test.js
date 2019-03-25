@@ -26,7 +26,13 @@ countdown(10);
 // 2
 // 1
 function countdown(startNumber) {
-  // .. put your implementation here
+	let n = startNumber;
+    return (function start() {
+        if(n) {
+			console.log(n--);
+			setTimeout(start,1000);
+		};
+    }());
 }
 
 // ----------------------------------------------------------------------------------------------------------
