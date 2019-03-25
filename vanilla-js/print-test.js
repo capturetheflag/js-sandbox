@@ -5,7 +5,7 @@ y.sum(7)
 y.sum(10)
 y.show()
 // 17
-// команда x.show() должна вывести 25 в консоль
+// команда y.show() должна вывести 17 в консоль
 
 function yeMath() {
   // .. put your implementation here
