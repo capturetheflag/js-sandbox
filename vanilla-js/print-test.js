@@ -38,7 +38,8 @@ add(100);
 // 129    - в консоль после второго вызова выведется 129 и так дальше
 
 function createNumberObj(base) {
-  // .. put your implementation here
+	let n = base;
+    return function(a){console.log(n += a);}
 }
 
 
