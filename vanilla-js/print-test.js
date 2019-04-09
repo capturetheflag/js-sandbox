@@ -60,6 +60,36 @@ function getParents( obj, level ) { // <- level = 0 => take no parents
    return all;
 }
 
+// 5. Function that performs deep clone of the Object. Reference types are cloned in the way where there are no longer any links from the original.
+function deepClone( value, level, useNewValues ) {
+   // useNewVariable - 1 => use child params, - 0 => use parent params
+   let output;
+   let parents = level >= 1 ? getParents( value, level ) : value;
+
+   if ( value && typeof( value ) == "object" ) {
+
+      output = Array.isArray( value ) ? [] : {};
+
+      for ( let i in value ) {
+         if ( level >= 1 ) {
+            for (let o1 = 0, o2 = parents.length; o1 < o2; o1++) {
+               let child = useNewValues > 0 ? (parents.length-o1-1) : o1;
+               if ( parents[child].hasOwnProperty(i) ) {
+                  output[i] = deepClone( parents[child][i], 0 );
+               }
+            }
+         }
+         else if( value.hasOwnProperty(i) ) {
+            output[i] = deepClone( value[i], 0 );
+         }
+      }
+
+      return output;
+   }
+   else {
+      return value;
+   }
+}
 
 
 // print
