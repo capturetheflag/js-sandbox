@@ -48,6 +48,18 @@ function createNumberObj(base) {
     return function(a){console.log(n += a);}
 }
 
+// 4. Function that collects all parents of the child until the assigned level in one Array
+function getParents( obj, level ) { // <- level = 0 => take no parents
+   let all = [];
+   all.push(obj); // <- first element is the child object itself
+   let proto = obj.constructor.getPrototypeOf( obj );
+   while ( level-- != 0 && proto != Object.prototype ) {
+      all.push(proto);
+      proto = proto.constructor.getPrototypeOf( proto );
+   }
+   return all;
+}
+
 
 
 // print
