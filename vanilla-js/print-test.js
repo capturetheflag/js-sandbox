@@ -91,6 +91,26 @@ function deepClone( value, level, useNewValues ) {
    }
 }
 
+// 6. Function that extends an Object "a" with parameters of the Object(s) "b"
+function extend(a, b, level, useNewValues) {
+   if (Array.isArray(b)) {
+      for (let j in b) {
+         let temp = deepClone(b[j], level, useNewValues);
+         for (let i in temp) {
+            a[i] = temp[i];
+         }
+      }
+   }
+   else {
+      let temp = deepClone(b, level, useNewValues);
+      for (let i in temp) {
+         a[i] = temp[i];
+      }
+   }
+
+   return a;
+}
+
 
 // print
 function print() {
